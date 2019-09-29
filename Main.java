@@ -1,10 +1,4 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -53,11 +47,18 @@ public class Main {
 			sb.append(jArray.toJSONString()).append("\n");
 			br.close();
 			read.close();
-			FileWriter writer = new FileWriter(args[1]);
+			/*FileWriter writer = new FileWriter(args[1]);
 			BufferedWriter bw = new BufferedWriter(writer);
+			
 			bw.write(sb.toString());
 			bw.close();
-			writer.close();
+			writer.close();*/
+			FileOutputStream fos = new FileOutputStream(args[1]); 
+	        OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8"); 
+	        osw.write(sb.toString()); 
+	        osw.flush(); 
+			
+			
 			}
 			
 			catch (FileNotFoundException e){
@@ -65,6 +66,7 @@ public class Main {
 			} catch (IOException e){
 				e.printStackTrace();
 			}
+			
 			}
 	
 public static ArrayList<String> getMatchesAddress(String level, String addr) {
