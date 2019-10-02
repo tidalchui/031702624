@@ -55,7 +55,7 @@ public class Main {
 			writer.close();*/
 			FileOutputStream fos = new FileOutputStream(args[1]); 
 	        OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8"); 
-	        osw.write(sb.toString()); 
+	        osw.write(jArray.toString()); 
 	        osw.flush(); 
 			
 			
