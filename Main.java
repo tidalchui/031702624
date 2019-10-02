@@ -10,7 +10,7 @@ import com.alibaba.fastjson.JSONArray;
 public class Main {
 	public static void main(String[] args) {
 		try{
-			StringBuffer sb = new StringBuffer("");
+		
 			FileInputStream fis = new FileInputStream(args[0]);
 			InputStreamReader read = new InputStreamReader(fis, "utf-8");
 			BufferedReader br = new BufferedReader(read);
@@ -44,15 +44,9 @@ public class Main {
 				Map<String, Object> JsonMap = getJson(arrayList, name, num);
 				jArray.add(JsonMap);
 			}
-			sb.append(jArray.toJSONString()).append("\n");
+
 			br.close();
 			read.close();
-			/*FileWriter writer = new FileWriter(args[1]);
-			BufferedWriter bw = new BufferedWriter(writer);
-			
-			bw.write(sb.toString());
-			bw.close();
-			writer.close();*/
 			FileOutputStream fos = new FileOutputStream(args[1]); 
 	        OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8"); 
 	        osw.write(jArray.toString()); 
