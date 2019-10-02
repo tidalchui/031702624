@@ -55,7 +55,7 @@ public class Main {
 			writer.close();*/
 			FileOutputStream fos = new FileOutputStream(args[1]); 
 	        OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8"); 
-	        osw.write(sb.toString()); 
+	        osw.write(jArray.toJSONString()); 
 	        osw.flush(); 
 			
 			
@@ -70,7 +70,7 @@ public class Main {
 			}
 	
 public static ArrayList<String> getMatchesAddress(String level, String addr) {
-	String paddr="(?<province>[^Ê¡]+×ÔÖÎÇø|.*?Ê¡|.*?ĞĞÕşÇø)?(?<city>[^ÊĞ]+×ÔÖÎÖİ|.*?µØÇø|.*?ĞĞÕşµ¥Î»|.+ÃË|ÊĞÏ½Çø|.*?ÊĞ|.*?ÏØ)?(?<county>[^ÏØ]+ÏØ|.{0,4}Çø|.+ÊĞ|.+Æì|.+º£Óò|.+µº)?(?<town>.*?Ïç|.*?½ÖµÀ|.+Õò)?(?<detail>.*)";
+	String paddr="(?<province>[^çœ]+è‡ªæ²»åŒº|.*?çœ|.*?è¡Œæ”¿åŒº)?(?<city>[^å¸‚]+è‡ªæ²»å·|.*?åœ°åŒº|.*?è¡Œæ”¿å•ä½|.+ç›Ÿ|å¸‚è¾–åŒº|.*?å¸‚|.*?å¿)?(?<county>[^å¿]+å¿|.{0,4}åŒº|.+å¸‚|.+æ——|.+æµ·åŸŸ|.+å²›)?(?<town>.*?ä¹¡|.*?è¡—é“|.+é•‡)?(?<detail>.*)";
     Matcher maddr = Pattern.compile(paddr).matcher(addr);
     String province = "", city = "", county = "", town = "", detail = "";
     if(maddr.find())
@@ -93,7 +93,7 @@ public static ArrayList<String> getMatchesAddress(String level, String addr) {
     	arrayList.add(detail);
     }
     else {
-    	String paddr2="(?<road>.*?Â·|.*?½Ö|)?(?<mark>.*?ºÅ)?(?<detail2>.*)";
+    	String paddr2="(?<road>.*?è·¯|.*?è¡—|)?(?<mark>.*?å·)?(?<detail2>.*)";
         Matcher maddr2 = Pattern.compile(paddr2).matcher(detail);
         String road = "", mark = "", detail2 = "";
         if(maddr2.find())
@@ -113,9 +113,9 @@ static Map<String, Object> map = null;
 public static Map<String, Object> getJson(ArrayList<String> arrayList, String name, String num) {
 	Object[] array =  arrayList.toArray();
 	map = new LinkedHashMap<String,Object>();
-	map.put("ĞÕÃû", name.toString());
-	map.put("ÊÖ»ú", num.toString());
-	map.put("µØÖ·", array);
+	map.put("å§“å", name.toString());
+	map.put("æ‰‹æœº", num.toString());
+	map.put("åœ°å€", array);
 	return map;
 	}
 }
